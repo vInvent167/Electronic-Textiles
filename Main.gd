@@ -67,9 +67,9 @@ func toEuler(new_angle : Quat):
 
 func readJSON(filepath : String):
 	var file = File.new()
-	file.open(filepath, file.READ)
-	dictionary = parse_json(file.get_as_text())
-	angles = dictionary.values()
+	if file.open(filepath, file.READ) == OK:
+		dictionary = parse_json(file.get_as_text())
+		angles = dictionary.values()
 
 
 func dispAngles():
