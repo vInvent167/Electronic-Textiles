@@ -1,0 +1,32 @@
+{
+  "001": {
+    "Elbow": 40,
+    "ShoulderX": 90,
+    "ShoulderY": 0,
+    "ShoulderZ": 0
+  },
+  "002": {
+    "Elbow": 40,
+    "ShoulderX": 90,
+    "ShoulderY": 0,
+    "ShoulderZ": 30
+  },
+  "003": {
+    "Elbow": 40,
+    "ShoulderX": 90,
+    "ShoulderY": 50,
+    "ShoulderZ": 30
+  },
+  "004": {
+    "Elbow": 40,
+    "ShoulderX": 80,
+    "ShoulderY": 50,
+    "ShoulderZ": 30
+  },
+  "005": {
+    "Elbow": 0,
+    "ShoulderX": 90,
+    "ShoulderY": 0,
+    "ShoulderZ": 0
+  }
+}

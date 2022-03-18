@@ -1,0 +1,183 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SphereMesh" id=2]
+
+[sub_resource type="CapsuleMesh" id=3]
+
+[sub_resource type="SphereMesh" id=4]
+
+[sub_resource type="CapsuleMesh" id=5]
+
+[sub_resource type="CubeMesh" id=6]
+
+[node name="Main" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 6, 0, 0, 0, 5, 0, -5, -6 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Shoulder" type="MeshInstance" parent="."]
+mesh = SubResource( 2 )
+skeleton = NodePath("")
+material/0 = null
+
+[node name="UpperArm" type="MeshInstance" parent="Shoulder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 4.35636 )
+mesh = SubResource( 3 )
+material/0 = null
+
+[node name="Elbow" type="MeshInstance" parent="Shoulder/UpperArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.33, 0, 0, 1.46589 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Lower Arm" type="MeshInstance" parent="Shoulder/UpperArm/Elbow"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.0303, 0, 0, 4.703 )
+mesh = SubResource( 5 )
+material/0 = null
+
+[node name="Hand" type="MeshInstance" parent="Shoulder/UpperArm/Elbow/Lower Arm"]
+transform = Transform( 1.5, 0, 0, 0, 0.8, 0, 0, 0, 0.5, 0, 0, 1.66667 )
+mesh = SubResource( 6 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22, 0, 10 )
+
+[node name="ElbowEdit" type="LineEdit" parent="."]
+margin_left = 125.0
+margin_top = 450.0
+margin_right = 200.0
+margin_bottom = 475.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderXEdit" type="LineEdit" parent="."]
+margin_left = 125.0
+margin_top = 480.0
+margin_right = 200.0
+margin_bottom = 505.0
+text = "90"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderYEdit" type="LineEdit" parent="."]
+margin_left = 125.0
+margin_top = 510.0
+margin_right = 200.0
+margin_bottom = 535.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderZEdit" type="LineEdit" parent="."]
+margin_left = 125.0
+margin_top = 540.0
+margin_right = 200.0
+margin_bottom = 565.0
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ElbowText" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 450.0
+margin_right = 100.0
+margin_bottom = 475.0
+text = "Elbow"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderXText" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 480.0
+margin_right = 100.0
+margin_bottom = 505.0
+text = "Shoulder Y"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderYText" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 510.0
+margin_right = 100.0
+margin_bottom = 535.0
+text = "Shoulder X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderZText" type="RichTextLabel" parent="."]
+margin_left = 25.0
+margin_top = 540.0
+margin_right = 100.0
+margin_bottom = 565.0
+text = "Shoulder Z"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ElbowSlider" type="HSlider" parent="."]
+margin_left = 225.0
+margin_top = 450.0
+margin_right = 350.0
+margin_bottom = 475.0
+min_value = -15.0
+max_value = 150.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderXSlider" type="HSlider" parent="."]
+margin_left = 225.0
+margin_top = 480.0
+margin_right = 350.0
+margin_bottom = 505.0
+max_value = 170.0
+value = 90.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderYSlider" type="HSlider" parent="."]
+margin_left = 225.0
+margin_top = 510.0
+margin_right = 350.0
+margin_bottom = 535.0
+min_value = -50.0
+max_value = 170.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShoulderZSlider" type="HSlider" parent="."]
+margin_left = 225.0
+margin_top = 540.0
+margin_right = 350.0
+margin_bottom = 565.0
+min_value = -80.0
+max_value = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="text_entered" from="ElbowEdit" to="." method="_on_ElbowEdit_text_entered"]
+[connection signal="text_entered" from="ShoulderXEdit" to="." method="_on_ShoulderXEdit_text_entered"]
+[connection signal="text_entered" from="ShoulderYEdit" to="." method="_on_ShoulderYEdit_text_entered"]
+[connection signal="text_entered" from="ShoulderZEdit" to="." method="_on_ShoulderZEdit_text_entered"]
+[connection signal="value_changed" from="ElbowSlider" to="." method="_on_ElbowSlider_value_changed"]
+[connection signal="value_changed" from="ShoulderXSlider" to="." method="_on_ShoulderXSlider_value_changed"]
+[connection signal="value_changed" from="ShoulderYSlider" to="." method="_on_ShoulderYSlider_value_changed"]
+[connection signal="value_changed" from="ShoulderZSlider" to="." method="_on_ShoulderZSlider_value_changed"]
