@@ -16,10 +16,11 @@ for onePort in ports:
 for x in range(0, len(portList)):
     if "Arduino" in portList[x]:
         portVar = portList[x]
+        print(portVar[0:4])
 
-print(portVar[0:4])
 
-serialInst.baudrate = 2000000
+
+serialInst.baudrate = 9600#2000000
 serialInst.port = portVar[0:4]
 serialInst.open()
 count = 0
@@ -40,17 +41,20 @@ while True:
         angleSZ = packet4.decode('utf').rstrip('\r').rstrip('\n')
         print(packet4.decode('utf').rstrip('\r').rstrip('\n'))
 
-        output ={
-            "Elbow" : float(angleE),
-            "ShoulderX" : float(angleSX),
-            "ShoulderY" : float(angleSY),
-            "ShoulderZ" : float(angleSZ)
-        }
+#        output ={
+#            "Elbow" : float(angleE),
+#            "ShoulderX" : float(angleSX),
+#            "ShoulderY" : float(angleSY),
+#            "ShoulderZ" : float(angleSZ)
+#        }
         output_string = '{"sample": ' + str(count) + ', "angles": [' + str(angleE) + ',' + str(angleSX) + ',' + str(angleSY) + ',' + str(angleSZ) + ']}'
         o_dict = json.loads(output_string)
         json_object = json.dumps(o_dict, indent = 5)
-        with open("jsonData.json", "w") as outfile:
-            outfile.write(json_object)
+        try:
+            with open("jsonData.json", "w") as outfile:
+                outfile.write(json_object)
+        except:
+            print("issues writing to json, datapoint skipped")
         # Serializing json
         #json_object = json.dumps(output, indent = 4)
 
